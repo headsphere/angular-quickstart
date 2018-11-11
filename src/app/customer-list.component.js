@@ -15,13 +15,22 @@ var CustomerListComponent = (function () {
     function CustomerListComponent(dataService, logger) {
         this.dataService = dataService;
         this.logger = logger;
+        this.isBusy = false;
     }
     //lifecycle code
     CustomerListComponent.prototype.ngOnInit = function () {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
+        this.getCustomers();
+    };
+    CustomerListComponent.prototype.getCustomers = function () {
+        var _this = this;
+        this.isBusy = true;
         this.logger.log("Getting customers...");
-        this.customers = this.dataService.getCustomers();
+        this.dataService.getCustomers().then(function (custs) {
+            _this.isBusy = false;
+            _this.customers = custs;
+        });
     };
     CustomerListComponent.prototype.shift = function (increment) {
         var _this = this;

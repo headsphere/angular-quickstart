@@ -12,8 +12,8 @@ import { LoggerService } from './logger.service';
 export class CustomerListComponent implements OnInit { 
 
   customer: Customer;
-
   customers: Customer[];
+  isBusy = false;
 
   constructor(
     private dataService: DataService, 
@@ -23,8 +23,17 @@ export class CustomerListComponent implements OnInit {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
+    this.getCustomers();
+  }
+  
+  getCustomers()
+  {
+    this.isBusy = true;
     this.logger.log("Getting customers...");
-    this.customers = this.dataService.getCustomers();
+    this.dataService.getCustomers().then(custs => {
+      this.isBusy = false;
+      this.customers = custs;
+    });
   }
 
   shift(increment: number)

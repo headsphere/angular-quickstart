@@ -16,9 +16,15 @@ var DataService = (function () {
         this.logger = logger;
     }
     DataService.prototype.getCustomers = function () {
+        var _this = this;
+        this.logger.log("Getting customers as a promise");
         var customers = test_data_1.createTestCustomers();
-        this.logger.log("Got " + customers.length + " customers");
-        return customers;
+        return new Promise(function (resolve) {
+            setTimeout(function () {
+                _this.logger.log("Got " + customers.length + " customers");
+                resolve(customers);
+            }, 1500);
+        });
     };
     return DataService;
 }());
