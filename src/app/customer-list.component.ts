@@ -30,10 +30,15 @@ export class CustomerListComponent implements OnInit {
   {
     this.isBusy = true;
     this.logger.log("Getting customers...");
-    //this.dataService.getCustomersP().then(custs => {
+    // this.dataService.getCustomersP().then(custs => {
     this.dataService.getCustomers().subscribe(custs => {
-        this.isBusy = false;
+      this.isBusy = false;
       this.customers = custs;
+    },
+    (errorMsg: string) => 
+    {
+      this.isBusy = false;
+      alert(errorMsg);
     });
   }
 

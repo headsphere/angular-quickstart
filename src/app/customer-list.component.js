@@ -27,10 +27,13 @@ var CustomerListComponent = (function () {
         var _this = this;
         this.isBusy = true;
         this.logger.log("Getting customers...");
-        //this.dataService.getCustomersP().then(custs => {
+        // this.dataService.getCustomersP().then(custs => {
         this.dataService.getCustomers().subscribe(function (custs) {
             _this.isBusy = false;
             _this.customers = custs;
+        }, function (errorMsg) {
+            _this.isBusy = false;
+            alert(errorMsg);
         });
     };
     CustomerListComponent.prototype.shift = function (increment) {

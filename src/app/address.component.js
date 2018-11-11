@@ -8,15 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var models_1 = require("./models");
 var core_1 = require("@angular/core");
+var models_1 = require("./models");
+var data_service_1 = require("./data.service");
 var AddressComponent = (function () {
-    function AddressComponent() {
+    function AddressComponent(dataService) {
+        this.dataService = dataService;
         this.hideAddress = false;
         this.regions = ['East', 'South', 'North', 'West', 'Midwest'];
-        this.states = ['California', 'Jalisco', 'Quebec', 'Illinois'];
     }
-    AddressComponent.prototype.ngOnInit = function () { };
+    AddressComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.dataService.getStates().subscribe(function (states) {
+            _this.states = states;
+        });
+    };
     return AddressComponent;
 }());
 __decorate([
@@ -28,7 +34,7 @@ AddressComponent = __decorate([
         selector: 'my-address',
         templateUrl: './address.component.html'
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [data_service_1.DataService])
 ], AddressComponent);
 exports.AddressComponent = AddressComponent;
 //# sourceMappingURL=address.component.js.map

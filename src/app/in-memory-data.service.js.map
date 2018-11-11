@@ -1,0 +1,1 @@
+{"version":3,"file":"in-memory-data.service.js","sourceRoot":"","sources":["in-memory-data.service.ts"],"names":[],"mappings":";AAEA,yCAAiD;AAEjD;IAAA;IAOA,CAAC;IALG,sCAAQ,GAAR;QACI,IAAM,MAAM,GAAG,CAAC,YAAY,EAAE,SAAS,EAAE,QAAQ,EAAE,UAAU,CAAC,CAAA;QAE9D,MAAM,CAAC,EAAE,SAAS,EAAE,+BAAmB,EAAE,EAAE,MAAM,QAAA,EAAE,CAAC;IACxD,CAAC;IACL,0BAAC;AAAD,CAAC,AAPD,IAOC;AAPY,kDAAmB"}
