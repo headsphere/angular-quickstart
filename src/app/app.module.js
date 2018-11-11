@@ -12,6 +12,8 @@ var app_component_1 = require("./app.component");
 var customer_list_component_1 = require("./customer-list.component");
 var customer_detail_component_1 = require("./customer-detail.component");
 var address_component_1 = require("./address.component");
+var data_service_1 = require("./data.service");
+var logger_service_1 = require("./logger.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,6 +27,10 @@ AppModule = __decorate([
             customer_detail_component_1.CustomerDetailComponent,
             customer_list_component_1.CustomerListComponent,
             address_component_1.AddressComponent
+        ],
+        providers: [
+            data_service_1.DataService,
+            logger_service_1.LoggerService
         ],
         bootstrap: [app_component_1.AppComponent]
     })

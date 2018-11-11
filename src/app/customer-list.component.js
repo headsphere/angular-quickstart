@@ -5,52 +5,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var core_1 = require("@angular/core");
+var data_service_1 = require("./data.service");
+var logger_service_1 = require("./logger.service");
 var CustomerListComponent = (function () {
-    function CustomerListComponent() {
-        this.customers = [
-            {
-                id: 1,
-                name: 'Alex Smith',
-                address: {
-                    street: '123 Main Street',
-                    city: 'Anytown',
-                    state: 'California',
-                    region: 'West'
-                }
-            },
-            {
-                id: 2,
-                name: 'Pierre Pasmal',
-                address: {
-                    street: '456 Rue de Main',
-                    city: 'Quebec City',
-                    state: 'Quebec',
-                    region: 'East'
-                }
-            },
-            {
-                id: 3,
-                name: 'Margarita Nadie',
-                address: {
-                    street: '789 Calle Principal',
-                    city: 'Guadalajara',
-                    state: 'Jalisco',
-                    region: 'South'
-                }
-            },
-            {
-                id: 4,
-                name: 'Katie O\'Leary',
-                address: {
-                    street: '137 DeKoven Street',
-                    city: 'Chicago',
-                    state: 'Illinois',
-                    region: 'Midwest'
-                }
-            },
-        ];
+    function CustomerListComponent(dataService, logger) {
+        this.dataService = dataService;
+        this.logger = logger;
     }
+    //lifecycle code
+    CustomerListComponent.prototype.ngOnInit = function () {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        this.logger.log("Getting customers...");
+        this.customers = this.dataService.getCustomers();
+    };
     CustomerListComponent.prototype.shift = function (increment) {
         var _this = this;
         var ix = this.customers.findIndex(function (c) { return c == _this.customer; }) + increment;
@@ -65,7 +37,9 @@ CustomerListComponent = __decorate([
         selector: 'customer-list',
         templateUrl: 'customer-list.component.html',
         styleUrls: ['customer-list.component.css']
-    })
+    }),
+    __metadata("design:paramtypes", [data_service_1.DataService,
+        logger_service_1.LoggerService])
 ], CustomerListComponent);
 exports.CustomerListComponent = CustomerListComponent;
 //# sourceMappingURL=customer-list.component.js.map
