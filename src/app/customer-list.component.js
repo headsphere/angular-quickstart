@@ -27,7 +27,8 @@ var CustomerListComponent = (function () {
         var _this = this;
         this.isBusy = true;
         this.logger.log("Getting customers...");
-        this.dataService.getCustomers().then(function (custs) {
+        //this.dataService.getCustomersP().then(custs => {
+        this.dataService.getCustomers().subscribe(function (custs) {
             _this.isBusy = false;
             _this.customers = custs;
         });

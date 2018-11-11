@@ -9,13 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var of_1 = require("rxjs/observable/of");
+require("rxjs/add/operator/delay");
+require("rxjs/add/operator/do");
 var test_data_1 = require("./test-data");
 var logger_service_1 = require("./logger.service");
 var DataService = (function () {
     function DataService(logger) {
         this.logger = logger;
     }
-    DataService.prototype.getCustomers = function () {
+    DataService.prototype.getCustomersP = function () {
         var _this = this;
         this.logger.log("Getting customers as a promise");
         var customers = test_data_1.createTestCustomers();
@@ -24,6 +27,16 @@ var DataService = (function () {
                 _this.logger.log("Got " + customers.length + " customers");
                 resolve(customers);
             }, 1500);
+        });
+    };
+    DataService.prototype.getCustomers = function () {
+        var _this = this;
+        this.logger.log("Getting customers as observable");
+        var customers = test_data_1.createTestCustomers();
+        return of_1.of(customers)
+            .delay(1500)
+            .do(function () {
+            _this.logger.log("Got " + customers.length + " customers");
         });
     };
     return DataService;
