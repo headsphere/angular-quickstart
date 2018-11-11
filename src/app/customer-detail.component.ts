@@ -9,12 +9,7 @@ import {Customer} from './models';
 })
 export class CustomerDetailComponent  { 
   @Input()
-
   customer: Customer;
 
-  hideAddress = false;
-
-  regions = ['East', 'South', 'North', 'West', 'Midwest']
-  states = ['California', 'Jalisco', 'Quebec', 'Illinois']
-
+  showAddress = true;
 }

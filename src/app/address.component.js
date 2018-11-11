@@ -8,24 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
 var models_1 = require("./models");
-var CustomerDetailComponent = (function () {
-    function CustomerDetailComponent() {
-        this.showAddress = true;
+var core_1 = require("@angular/core");
+var AddressComponent = (function () {
+    function AddressComponent() {
+        this.hideAddress = false;
+        this.regions = ['East', 'South', 'North', 'West', 'Midwest'];
+        this.states = ['California', 'Jalisco', 'Quebec', 'Illinois'];
     }
-    return CustomerDetailComponent;
+    AddressComponent.prototype.ngOnInit = function () { };
+    return AddressComponent;
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", models_1.Customer)
-], CustomerDetailComponent.prototype, "customer", void 0);
-CustomerDetailComponent = __decorate([
+    __metadata("design:type", models_1.Address)
+], AddressComponent.prototype, "address", void 0);
+AddressComponent = __decorate([
     core_1.Component({
-        moduleId: module.id,
-        selector: 'customer-detail',
-        templateUrl: 'customer-detail.component.html',
-    })
-], CustomerDetailComponent);
-exports.CustomerDetailComponent = CustomerDetailComponent;
-//# sourceMappingURL=customer-detail.component.js.map
+        selector: 'my-address',
+        templateUrl: './address.component.html'
+    }),
+    __metadata("design:paramtypes", [])
+], AddressComponent);
+exports.AddressComponent = AddressComponent;
+//# sourceMappingURL=address.component.js.map
