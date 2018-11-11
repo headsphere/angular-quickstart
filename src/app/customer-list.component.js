@@ -51,6 +51,12 @@ var CustomerListComponent = (function () {
             },
         ];
     }
+    CustomerListComponent.prototype.shift = function (increment) {
+        var _this = this;
+        var ix = this.customers.findIndex(function (c) { return c == _this.customer; }) + increment;
+        ix = Math.min(this.customers.length - 1, Math.max(0, ix));
+        this.customer = this.customers[ix];
+    };
     return CustomerListComponent;
 }());
 CustomerListComponent = __decorate([

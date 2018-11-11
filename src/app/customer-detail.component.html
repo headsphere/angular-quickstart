@@ -1,7 +1,11 @@
 <div *ngIf="customer">
 
-    <h1>Hello {{customer.name}}</h1>
-    <br />
+    <h2>
+            <button (click)="left()"><</button>
+            {{customer.name}} 
+            <button (click)="right()">></button>
+    </h2>
+    
 
     <fieldset>
         <label>Name: <input [(ngModel)]="customer.name"> </label>
